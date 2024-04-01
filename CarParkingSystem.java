@@ -8,9 +8,27 @@ import java.util.Scanner;
 public class CarParkingSystem {
 
 	private static List<List<Object>> list = new LinkedList<List<Object>>();
-	static int[] totalduration = new int[3];
-	static String start = "12:00";
-	static String end = "18:00";
+	private static int numberOfSlots;
+	private static int[] totalduration;
+	private static String start;
+	private static String end;
+	
+	public static void initialize() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter Total Slots : ");
+		numberOfSlots = scanner.nextInt();
+		System.out.println("Enter Parking Start Time : ");
+		start = scanner.nextLine();
+		System.out.println("Enter Parking End Time : ");
+		end = scanner.nextLine();
+		
+		totalduration = new int[numberOfSlots];
+		for (int i = 0; i < numberOfSlots; i++) {
+			list.add(new ArrayList<Object>());
+			totalduration[i] = 360;
+		}
+
+	}
 
 	public static void operations() throws Exception {
 		System.out.println("-> MAIN MENU ");
@@ -36,14 +54,6 @@ public class CarParkingSystem {
 			System.out.println("Invalid Input");
 			operations();
 		}
-	}
-
-	public static void initialize() {
-		for (int i = 0; i <= 2; i++) {
-			list.add(new ArrayList<Object>());
-			totalduration[i] = 360;
-		}
-
 	}
 
 	public static void addCar() throws Exception {
